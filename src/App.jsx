@@ -1,35 +1,39 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Menu from './components/Menu/Menu.jsx'
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+    const productos = [
+    {
+      categoria: "Coffee",
+      imagenCategoria: "./coffee.jpg",
+      items: [
+        { nombreProducto: "French Vanilla", precio: 3.00 },
+        { nombreProducto: "Caramel Macchiato", precio: 3.75 },
+        { nombreProducto: "Pumpkin Spice", precio: 3.50 },
+        { nombreProducto: "Hazelnut", precio: 4.00 },
+        { nombreProducto: "Mocha", precio: 4.50 }
+      ]
+    },
+    {
+      categoria: "Desserts",
+      imagenCategoria: "./pie.jpg",
+      items: [
+        { nombreProducto: "Donut", precio: 1.50 },
+        { nombreProducto: "Cherry Pie", precio: 2.75 },
+        { nombreProducto: "Cheesecake", precio: 3.00 },
+        { nombreProducto: "Cinnamon Roll", precio: 2.50 }
+      ]
+    }
+    ]
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <div id='mainPanel'>
+            <Menu data={productos}/>
+        </div>
+    )
 }
 
 export default App

@@ -1,0 +1,13 @@
+#menuContainer {
+    background-color: rgb(222,184,135);
+    height: 80%;
+    width: 20%;
+}
+
+.separador{
+  border:0;
+  height:0.5%;
+  width: 90%;
+  background:#b30000;
+  margin:auto;
+}
