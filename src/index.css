@@ -23,14 +23,14 @@ h1 {
   font-family: 'Anton', sans-serif;
   font-size: 3.2em;
   line-height: 1.1;
-  margin: 0;
+  margin: 12px 0;
 }
 
 h2 {
   font-family: 'Anton', sans-serif;
   font-size: 1.6em;
   line-height: 1.1;
-  margin: 0;
+  margin: 12px 0;
 }
 
 h2, h3, h4, h5, h6 {
@@ -45,4 +45,18 @@ img {
 
 a {
     color: #000;
+}
+
+@media (min-width: 2000px) {
+  body {
+    font-size: 20px;
+  }
+
+  span {
+    font-size: larger;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
 }

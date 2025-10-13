@@ -9,8 +9,8 @@ const DishesCard = ({categoria, imagen, items}) => {
         <ul id='dishList'>
         {items.map((item, i) => (
           <li id='dishRow' key={i}>
-            <span>{item.nombreProducto}</span>
-            <span>{item.precio.toFixed(2)}</span>
+            <span className='nombre'>{item.nombreProducto}</span>
+            <span className='precio'>{item.precio.toFixed(2)}</span>
           </li>
         ))}
       </ul>
