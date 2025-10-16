@@ -10,15 +10,15 @@ const Menu = ({ data }) => {
         <MenuHeader/>
         <hr className="separador" />
         {data.map((categoria, index) => (
-        <DishesCard
-          key={index}
-          categoria={categoria.categoria}
-          imagen={categoria.imagenCategoria}
-          items={categoria.items}
-        />
-      ))}
+            <DishesCard
+            key={index}
+            categoria={categoria.categoria}
+            imagen={categoria.imagenCategoria}
+            items={categoria.items}
+            />)
+            )
+        }
         <hr className="separador" />
-    
         <MenuFooter/>
     </div>
   )
