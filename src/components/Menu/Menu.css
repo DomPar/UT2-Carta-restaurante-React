@@ -1,13 +1,28 @@
 #menuContainer {
     background-color: rgb(222,184,135);
-    height: 80%;
     width: 20%;
+    height: 80vh;          
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 
-.separador{
-  border:0;
-  height:0.5%;
-  width: 90%;
-  background:#b30000;
-  margin:auto;
+#mainMenu {
+    flex: 1;                
+    min-height: 0;          
+    overflow-y: auto;
+}
+
+#mainMenu::-webkit-scrollbar {
+  display: none;
+}
+
+#toggleEditBtn {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 0%;
+    cursor: pointer;
+    border-radius: 30px;
+    border: 0;
 }

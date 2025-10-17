@@ -60,3 +60,12 @@ a {
     font-size: 2em;
   }
 }
+
+.separador{
+  border:0;
+  height:0.5%;
+  width: 90%;
+  background:#b30000;
+  margin:auto;
+}
+
