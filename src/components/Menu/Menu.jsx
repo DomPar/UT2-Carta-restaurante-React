@@ -62,8 +62,7 @@ const Menu = () => {
     return (
         <div id='menuContainer'>
             <MenuHeader/>
-            <button id='toggleEditBtn' aria-pressed={editMode} onClick={toggleEdit}>{editMode ? 'X' : '✏️'}
-            </button>
+            <button id='toggleEditBtn' onClick={toggleEdit}> {editMode ? 'X' : '✏️'} </button>
             <section id='mainMenu'>
             {products.map((categoria, index) => (
                 <DishesCard
