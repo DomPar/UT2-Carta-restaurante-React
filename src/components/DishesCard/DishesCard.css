@@ -29,12 +29,15 @@
     cursor: pointer;
 }
 
-.editBtn,
-.deleteBtn {
+.editBtn, .deleteBtn {
     background: none;
     border: none;
     cursor: pointer;
 }
 
-.editBtn:hover { color: blue; }
-.deleteBtn:hover { color: red; }
+
+.dishesCardHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

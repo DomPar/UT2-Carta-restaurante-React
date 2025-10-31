@@ -8,14 +8,15 @@
 }
 
 #mainMenu {
-    flex: 1;                
+    display: flex;
+    flex-direction: column;
     min-height: 0;          
     overflow-y: auto;
+    scrollbar-width: none;
+    margin-bottom: 10px;
 }
 
-#mainMenu::-webkit-scrollbar {
-  display: none;
-}
+
 
 #toggleEditBtn {
     width: 30px;
@@ -25,4 +26,16 @@
     cursor: pointer;
     border-radius: 30px;
     border: 0;
+}
+
+#addCategoryBtn {
+    width: 40px;
+    height: 40px;
+    background-color: rgb(136, 124, 107);
+    border: 0;
+    cursor: pointer;
+    border-radius: 30px;
+    font-size: 25px;
+    align-self: center;
+    margin-top: 5px;
 }
