@@ -8,4 +8,4 @@
 
 ## CRUD de cafetería con Fetch API
 
-WIP
+06/11/25 -> Rama API-CRUD
