@@ -1,82 +1,33 @@
 import DishList from '../DishList/DishList'
 import './DishesCard.css'
 import { useState } from 'react'
+import { updateCategory, deleteCategory, addProduct } from '../../services/api'
 
 
-const DishesCard = ({indx, categoria, imagen, items, editMode, setProducts}) => {
+const DishesCard = ({id, categoria, imagen, items, editMode, setReload}) => {
 
     const [nombre, setNombre] = useState('')
     const [precio, setPrecio] = useState('')
 
-    const editCategory = () => {
+    const editCat = async () => {
     const nuevoNombre = prompt('Nuevo nombre de la categoría:')
-    if (!nuevoNombre) return
-        setProducts(prevProducts =>
-            prevProducts.map((category, i) =>
-                i === indx
-                    ? { ...category, categoria: nuevoNombre }
-                    : category
-            )
-        )
+    if (!nuevoNombre) return;
+        await updateCategory(id, nuevoNombre);
+        setReload(prev => !prev);
     }
 
-    const deleteCategory = () => {
-        setProducts(prevProducts =>
-            prevProducts.filter((_, i) => i !== indx)
-        )
+    const deleteCat = async () => {
+        await deleteCategory(id);
+        setReload(prev => !prev);
     }
     
-    const addItem = (e) => {
+    const addItem = async (e) => {
         e.preventDefault()
-        if (!nombre.trim() || !precio) return  
-        const nuevoItem = {
-            nombreProducto: nombre.trim(),
-            precio: parseFloat(precio)
-        }
+        if (!nombre.trim() || !precio) return
+        await addProduct(id, nombre.trim(), parseFloat(precio));  
+        setReload(prev => !prev);
         setNombre('')
         setPrecio('')
-        setProducts(prevProducts =>
-            prevProducts.map((categoria, i) => {
-                if (i === indx) {
-                    return {
-                        ...categoria,
-                        items: [...categoria.items, nuevoItem]
-                    }
-                }
-                return categoria
-            })
-        )
-    }
-
-    const editItem = (categoriaNombre, index) => {
-        const nuevoNombre = prompt('Nuevo nombre del producto:')
-        const nuevoPrecio = prompt('Nuevo precio:')
-        if (!nuevoNombre || !nuevoPrecio) return
-        setProducts(prevProducts =>
-            prevProducts.map(category => {
-                if (category.categoria === categoriaNombre) {
-                    const nuevosItems = category.items.map((item, i) =>
-                        i === index
-                            ? { ...item, nombreProducto: nuevoNombre, precio: parseFloat(nuevoPrecio) }
-                            : item
-                    )
-                    return { ...category, items: nuevosItems }
-                }
-                return category
-            })
-        )
-    }
-    
-    const deleteItem = (categoriaNombre, index) => {
-        setProducts(prevProducts =>
-            prevProducts.map(category => {
-                if (category.categoria === categoriaNombre) {
-                    const nuevosItems = category.items.filter((_, i) => i !== index)
-                    return { ...category, items: nuevosItems }
-                }
-                return category
-            })
-        )
     }
 
     return (
@@ -84,14 +35,14 @@ const DishesCard = ({indx, categoria, imagen, items, editMode, setProducts}) => 
             <div className="dishesCardHeader">
                 <h2>{categoria}</h2>
                 {editMode && 
-                    <button className='editBtn' onClick={() => editCategory()}>✏️</button>
+                    <button className='editBtn' onClick={editCat}>✏️</button>
                 }
                 {editMode && 
-                    <button className='deleteBtn' onClick={() => deleteCategory()}>🗑️</button>
+                    <button className='deleteBtn' onClick={deleteCat}>🗑️</button>
                 }
             </div>
             <img src={imagen} alt={categoria} />
-            <DishList items={items} onEditItem={editItem} editMode={editMode} categoria={categoria} onDeleteItem={deleteItem}/>
+            <DishList items={items} editMode={editMode} categoria={categoria} setReload={setReload} />
             {editMode && 
             <form id='addDishForm' onSubmit={addItem}>
                 <input
